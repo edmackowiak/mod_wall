@@ -1,0 +1,24 @@
+%%% # Example module config (all options may be ommited to disable extra functionality)
+%%%  [{debug, true}, {audit_collector, "test1@emackowiak-mbp.local/Psi+"} ]
+%%%    - If debug=true, info messages will be logged to ejabberd.log
+%%%    - If audit_collector is specified, a message will be send to the collector whenever a packet is dropped
+%%% 
+%%% # Example ACL/Access Rule Configuration: (mod_wall uses the acl/access rule style of mod_filter)
+%%% 
+%%% -Block all disco IQ packets
+%%% {access, 'http://jabber.org/protocol/disco#info', [{deny, all}]}
+%%%           ^ xmlns (atom) is used as rule name ^ 
+%%%
+%%% -Block some disco IQ packets
+%%% {access, 'http://jabber.org/protocol/disco#info', [{deny, all},
+%%%   {allow, some-acl},
+%%%   {allow, another-acl},  ]}
+%%%
+%%% -Block some disco IQ packets, depending on their intended recipient
+%%% {access, 'http://jabber.org/protocol/disco#info', [{deny, all},
+%%%   {allow, some-acl},
+%%%   {restrict-receivers, all},  ]}
+%%%  ^^ if a rule is found instead of allow/deny,
+%%%	filtering is performed against the packet receiver
+%%%
+%%% {access, restrict-receivers, [{deny, denied-receiver-acl}, {allow,all}]}
